@@ -108,10 +108,52 @@ async function getTvDetails() {
       }
 
       loadTrailer(); // load general trailer
+
+
+  // Update SEO metadata dynamically
+  document.title = `${data.name} (${new Date(data.first_air_date).getFullYear()}) | F2Movies`;
+
+  document.getElementById("meta-title").textContent = document.title;
+  document.getElementById("meta-description").setAttribute("content", data.overview || "Watch this show online free in HD.");
+  document.getElementById("meta-keywords").setAttribute("content", `${data.name}, ${data.genres?.map(g => g.name).join(", ")}, watch online, free streaming`);
+  
+  document.getElementById("og-title").setAttribute("content", data.name);
+  document.getElementById("og-description").setAttribute("content", data.overview || "Free streaming, no ads.");
+  if (data.poster_path) {
+    document.getElementById("og-image").setAttribute("content", `${IMG_BASE}${data.poster_path}`);
+    document.getElementById("twitter-image").setAttribute("content", `${IMG_BASE}${data.poster_path}`);
+  }
+  document.getElementById("twitter-title").setAttribute("content", data.name);
+  document.getElementById("twitter-description").setAttribute("content", data.overview || "");
+  
+  const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "TVSeries",
+    "name": data.name,
+    "description": data.overview,
+    "image": data.poster_path ? `${IMG_BASE}${data.poster_path}` : "images/no-poster-186x286.png",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": data.vote_average,
+      "ratingCount": data.vote_count
+    },
+    "genre": data.genres?.map(g => g.name),
+    "countryOfOrigin": data.origin_country,
+    "numberOfSeasons": data.number_of_seasons,
+    "numberOfEpisodes": data.number_of_episodes,
+    "productionCompany": data.production_companies?.map(p => p.name),
+    "datePublished": data.first_air_date
+  };
+  document.getElementById("ld-json").textContent = JSON.stringify(schemaData);
+  
+  
+
     }
   } catch (error) {
     console.error("Error fetching TV details:", error);
   }
+
+
 }
 
 // ✅ Fetch Casts
