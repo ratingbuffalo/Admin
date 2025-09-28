@@ -2,40 +2,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+   
+  <!-- ✅ SEO-ready <head> block for movie-detail.html -->
+  <title>Movie Detail | F2Movies</title>
+
+  <!-- Default fallback -->
+  <meta id="seo-title" name="title" content="Watch Movies & TV Shows Online Free | F2Movies">
+  <meta id="seo-description" name="description" content="Stream free HD movies & TV shows. Explore cast, ratings, trailers, and recommendations on F2Movies.">
   
-    <!-- Default fallback (when no ID provided) -->
-    <title id="seo-title">Watch Movies & TV Shows Online Free | F2Movies</title>
-    <meta name="description" id="seo-description" content="Stream free HD movies & TV shows. Explore cast, ratings, trailers, and recommendations on F2Movies.">
+  <!-- Open Graph -->
+  <meta property="og:type" content="video.movie">
+  <meta id="og-title" property="og:title" content="Watch Free Movies Online">
+  <meta id="og-description" property="og:description" content="Watch the latest movies and TV shows online for free in HD.">
+  <meta id="og-image" property="og:image" content="images/favicon.png">
+  <meta id="og-url" property="og:url" content="https://f2movies.us/movie-detail.html">
   
-    <!-- Open Graph -->
-    <meta property="og:type" content="video.movie">
-    <meta property="og:title" id="og-title" content="Watch Free Movies Online">
-    <meta property="og:description" id="og-description" content="Watch the latest movies and TV shows online for free in HD.">
-    <meta property="og:image" id="og-image" content="images/placeholder.jpg">
-    <meta property="og:url" id="og-url" content="https://f2movies.us/movie-detail.html">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta id="twitter-title" name="twitter:title" content="Watch Free Movies Online">
+  <meta id="twitter-description" name="twitter:description" content="Stream free HD movies & TV shows on F2Movies.">
+  <meta id="twitter-image" name="twitter:image" content="images/favicon.png">
   
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" id="twitter-title" content="Watch Free Movies Online">
-    <meta name="twitter:description" id="twitter-description" content="Stream free HD movies & TV shows on F2Movies.">
-    <meta name="twitter:image" id="twitter-image" content="images/placeholder.jpg">
+  <!-- Canonical -->
+  <link id="canonical-link" rel="canonical" href="https://f2movies.us/movie-detail.html">
   
-    <!-- Canonical -->
-    <link rel="canonical" id="canonical-link" href="https://f2movies.us/movie-detail.html">
+  <!-- JSON-LD Schema (placeholder, will be replaced by JS) -->
+  <script id="json-ld" type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Movie",
+    "name": "Movie",
+    "description": "Watch free HD movies and TV shows on F2Movies.",
+    "image": "images/favicon.png"
+  }
+  </script>
   
-    <!-- JSON-LD Schema (placeholder) -->
-    <script type="application/ld+json" id="json-ld">
-    {
-      "@context": "https://schema.org",
-      "@type": "Movie",
-      "name": "Movie",
-      "description": "Watch free HD movies and TV shows on F2Movies.",
-      "image": "images/placeholder.jpg"
-    }
-    </script>
-  
-    <!-- Favicon & CSS -->
-    <link rel="icon" type="image/png" href="/images/favicon.png">
+  <!-- Favicon & CSS -->
+  <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/detail.css">
@@ -880,4 +883,5 @@
 <script defer src="banners.json"></script>
 </body>
 </html>
+
 
