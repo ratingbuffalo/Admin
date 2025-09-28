@@ -1,0 +1,851 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Movie Detail</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/detail.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/2nd.css">
+  <link rel="stylesheet" href="css/3rd.css">
+  <link rel="stylesheet" href="css/promo.css">
+  <style>
+    :root {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --bg-card: #3a3a3a;
+    --accent: #c4ff00;
+    --text-light: #fff;
+    --text-muted: #b3b3b3;
+  }
+
+  
+  a,
+  a:link,
+  a:visited,
+  a:hover,
+  a:focus {
+    color: #c4ff00;
+    text-decoration: none;
+  }
+
+    /* ==========================
+     Header / Navigation
+  ========================== */
+  .main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-secondary);
+    padding: 12px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--accent);
+  }
+  .logo span {
+    color: var(--text-light);
+  }
+  .nav-links a {
+    color: var(--text-light);
+    margin: 0 10px;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--accent);
+  }
+  .search-login {
+    display: flex;
+    align-items: center;
+  }
+  .search-login input {
+    padding: 6px;
+    border: none;
+    border-radius: 4px;
+    outline: none;
+    background: var(--bg-card);
+    color: var(--text-light);
+  }
+  .search-login button {
+    margin-left: 6px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background: var(--bg-card);
+    color: var(--accent);
+  }
+  .search-login button:hover {
+    background: var(--accent);
+    color: #000;
+  }
+  .login-btn {
+    background: var(--accent) !important;
+    color: #000 !important;
+    font-weight: bold;
+  }
+  .hamburger {
+    display: none;
+    background: none;
+    font-size: 22px;
+    border: none;
+    color: var(--accent);
+  }
+
+    /* ---------- Backdrop + Player layout ---------- */
+
+.backdrop {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 12px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  /* ensure the background image is slightly dim by default - JS adds image */
+}
+
+/* create blurred backdrop effect by placing a pseudo-element */
+.backdrop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-size: inherit;
+  background-position: inherit;
+  background-repeat: no-repeat;
+  /* the JS will set --backdrop-image to the full url for the pseudo-element */
+  background-image: var(--backdrop-image, none);
+  filter: blur(8px) scale(1.02);
+  transform: translateZ(0);
+  z-index: 0;
+}
+
+/* overlay for dark gradient */
+.backdrop-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.6) 100%);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* player container (centers content) */
+.video-player-container {
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  z-index: 2;
+  position: relative;
+  pointer-events: none; /* allow only buttons inside to be interactive */
+}
+
+/* center area for play button or loader */
+.player-center {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Play button circular design */
+.play-button {
+  width: 80px;
+  height: 80px;
+  border: 3px solid white;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  pointer-events: auto;
+}
+
+/* play icon triangle (pure CSS) */
+.play-button .play-icon {
+  width: 0;
+  height: 0;
+  border-left: 18px solid white;
+  border-top: 11px solid transparent;
+  border-bottom: 11px solid transparent;
+  margin-left: 4px;
+  display: inline-block;
+}
+
+/* hover */
+.play-button:hover {
+  transform: scale(1.1);
+  background: rgba(255,255,255,0.12);
+}
+
+/* Dotted loader (replaces play-button while loading) */
+.dotted-loader {
+  width: 80px;
+  height: 80px;
+  border: 3px dotted white;
+  border-radius: 50%;
+  animation: spin 1.9s linear infinite;
+  display: inline-block;
+  box-sizing: border-box;
+}
+
+/* spin animation */
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Title & year text under the button */
+.player-meta {
+  text-align: center;
+  color: #fff;
+  pointer-events: none;
+}
+
+.player-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 8px;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+  white-space: normal;   /* allow wrapping */
+  overflow: visible;     /* no clipping */
+  text-overflow: unset;  /* disable ellipsis */
+}
+
+.player-year {
+  font-size: 18px;
+  font-weight: 500;
+  opacity: 0.95;
+  margin-top: 4px;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+
+/* When iframe is injected, make it fill the container */
+.video-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: 12px;
+}
+
+/* small error message UI */
+.player-error {
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+}
+
+/* responsive tweaks */
+@media (max-width: 640px) {
+  .player-title { font-size: 20px; }
+  .player-year { font-size: 16px; }
+  .play-button { width: 68px; height: 68px; border-width: 2.5px; }
+  .dotted-loader { width: 68px; height: 68px; border-width: 2.5px; }
+  .play-button .play-icon { border-left-width: 16px; border-top-width: 9px; border-bottom-width: 9px; }
+}
+
+.related-section {
+  margin-top: 40px;
+  padding: 0 6px;
+
+  margin-bottom: 40px;
+}
+
+.related-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 18px;
+  color: #adff2f; /* same lime color */
+}
+
+.related-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  /* gap: 18px; */
+
+  gap: 16px;
+}
+
+.related-card {
+/*   background: #1c1c1c; */  
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.25s ease;
+  position: relative;
+
+  background: #1d1d1d;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.45);
+
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.related-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.related-card:hover {
+  transform: translateY(-6px);
+}
+
+.related-card img {
+  /* height: 240px; */
+
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.related-card .card-info { 
+  padding: 10px;
+  color: #fff;
+  background: linear-gradient(180deg, rgba(0,0,0,0.0) 0%, rgba(0,0,0,0.05) 100%);
+}
+
+.related-card .card-info h3 {
+  /* 
+  margin: 4px 0; */
+
+  font-size: 14px;
+  margin: 0 0 6px 0;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.related-card .card-info span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.related-section h2 {
+  color: #c4ff00;
+  font-size: 22px;
+  margin: 0 0 14px 6px;
+}
+
+
+/* poster wrapper inside the card (so badges can be absolutely positioned) */
+.related-card .poster {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+
+/* top-right badge (HD) */
+.related-card .card-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #c4ff00;
+  color: #000;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 12px;
+  z-index: 3;
+}
+
+/* bottom-left episode badge (for TV items) */
+.related-card .card-ep {
+  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  background: rgba(0,0,0,0.7);
+  color: #c4ff00;
+  font-weight: 700;
+  padding: 4px 6px;
+  border-radius: 6px;
+  font-size: 12px;
+  z-index: 3;
+
+ /*  position: absolute;
+  left: 8px;
+  bottom: 8px;
+  background: rgba(0,0,0,0.65);
+  color: #c4ff00;
+  font-weight: 600;
+  padding: 4px 6px;
+  border-radius: 4px;
+  font-size: 12px; */
+}
+
+
+.related-card .card-info .meta {
+  font-size: 12px;
+  color: #bdbdbd;
+}
+
+/* pagination */
+.pagination {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 40px; /* ✅ fix disappearing issue */
+}
+
+.pagination.related-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  align-items: center;
+}
+
+.pagination.related-pagination button {
+  background: #1f1f1f;
+  color: #fff;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.15s ease;
+}
+
+.pagination.related-pagination button:hover { background: #333; }
+.pagination.related-pagination button.active { background: #adff2f; color: #000; font-weight: 700; }
+
+
+.poster {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card-badge {
+  position: absolute;
+  /* background: #111; */
+  background: none;
+  color: #fff;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  /* border: 3px solid red; */
+}
+
+.card-badge.top-left {
+  top: 6px;
+  left: 6px;
+  width: cal(2px * 2);
+  height: cal(16px * 2);
+  background: rgba(0,0,0,0);
+  /* border: 3px solid red; */
+  color: var(--accent);
+
+}
+
+.card-badge.top-right {
+/*   top: 6px;
+  right: 6px;
+  background: var(--accent); */ /* green for HD */
+
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--accent);
+  color: #000;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.card-ep.bottom-left {
+  bottom: 6px;
+  left: 6px;
+  /* background: #ffc107;  *//* amber for EP/Movie */
+
+}
+
+.card-info h3 {
+  font-size: 14px;
+  margin: 0 8px 10px;
+  letter-spacing: normal;
+  color: var(--text-light);
+  margin: 8px 8px 4px; /* remove top margin */
+
+}
+.card-info .meta {
+  display: flex;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.social-share {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 15px 0;
+}
+
+/* .social-share a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  transition: all 0.3s ease;
+} */
+
+.social-share a.tips{
+  width: calc(42px * 4.5);
+}
+.social-share a.telegram,
+.social-share a.whatsapp,
+.social-share a.instagram{
+  width: 40px;
+  margin-top: -0.5px;
+}
+.social-share a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(42px * 3.5);
+  height: 42px;
+  border-radius: 12px;
+  color: white;
+  font-size: 28px;
+  transition: all 0.3s ease;
+}
+
+.social-share a.facebook { background: #3b5998; }
+.social-share a.twitter { background: #000000; }
+.social-share a.whatsapp { background: #25d366; }
+.social-share a.telegram { background: #0088cc; }
+.social-share a.reddit { background: #ff4500; }
+.social-share a.instagram { background: linear-gradient(45deg,#f58529,#dd2a7b); }
+.social-share a.tips {
+  
+
+  background-color: #fff; 
+  border-radius: 12px; 
+  box-shadow: transparent 0 0 0 3px,
+   rgba(18, 18, 18, .1 ) 0 6px 20px; 
+  box-sizing: border-box; 
+  color: #121212; 
+  cursor: pointer; 
+  display: inline-flex; 
+  flex: 1 1 auto; 
+  font-family: inter,sans-serif;
+  max-width: calc(42px * 6);
+  font-size: 1.2rem; 
+  font-weight: 700; 
+  justify-content: center; 
+  line-height: 1; 
+  margin: 0; 
+/*   margin-top: 10px; */  
+  outline: 0;
+  padding: 1rem 1.2rem;
+  text-align: center; 
+  letter-spacing: 2px;
+  text-decoration: none; 
+  transition: box-shadow .2s, -webkit-box-shadow .2s; 
+  white-space: nowrap; 
+  border: 0; 
+  user-select: none; 
+  -webkit-user-select: none; 
+  touch-action: manipulation;
+  
+}
+.social-share a:hover {
+  opacity: 0.85;
+  transform: translateY(-3px);
+}
+.social-share a.tips:hover {
+  background: #fff;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+<!-- ✅ Header OLD-->
+<!-- <header class="site-header">
+  <div class="logo">F2Movies Replica</div>
+  <nav class="main-nav">
+    <a href="index.html">Home</a>
+    <a href="#">Movies</a>
+    <a href="#">TV Shows</a>
+    <a href="#">Genres</a>
+    <a href="#">Country</a>
+  </nav>
+  <div class="search-login">
+    <input type="text" placeholder="Search...">
+    <button>Login</button>
+  </div>
+</header> -->
+
+  <!-- Header NEW-->
+<!--   <header class="main-header">
+    <div class="logo">F2<span>movies</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="movies.html" class="active">Movies</a>
+      <a href="tv-shows.html">TV Shows</a>
+      <a href="Advertise-with-us.html">Advertise with us</a>
+      <a href="#">Android App</a>
+    </nav>
+    <div class="search-login">
+      <input type="text" placeholder="Search..." id="search-input">
+      <button id="search-btn">🔍</button>
+      <button class="login-btn">Login</button>
+    </div>
+    <button class="hamburger">☰</button>
+  </header> -->
+
+  <!-- Header -->
+  <header class="main-header">
+    <div class="logo">F2<span>movies.us</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="movies.html">Movies</a>
+      <a href="tv-shows.html">TVShows</a>
+      <a href="Advertise-with-us.html"><span>Advertise with us</span></a>
+      <a href="coming-soon.html"><span>Android App</span></a>
+    </nav>
+    <div class="search-login">
+      <input type="text" placeholder="Search..." id="search-input">
+      <button id="search-btn" style="visibility: hidden;">🔍</button>
+      <!-- <button class="login-btn">Login</button> -->
+    </div>
+    <button class="hamburger">☰</button>
+  </header>
+
+<!-- ✅ Breadcrumb -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / <span id="breadcrumb-type">Movies</span> / <span id="breadcrumb-title"></span>
+</div>
+
+<!-- ✅ Backdrop -->
+<!-- Backdrop / Video Player -->
+<section class="backdrop backdrop-section" id="backdrop" aria-label="Movie backdrop">
+  <!-- Background will be set inline by JS via style.backgroundImage -->
+
+  <!-- overlay gradient + player content container -->
+  <div class="backdrop-overlay">
+    <div class="video-player-container" id="video-player-container" role="region" aria-label="Video player">
+      <!-- center area where play button or loader will be -->
+      <div class="player-center" id="player-center">
+        <button class="play-button" id="play-button" aria-label="Play">
+          <span class="play-icon" aria-hidden="true"></span>
+        </button>
+      </div>
+
+      <!-- Title and year underneath the play button -->
+      <div class="player-meta">
+        <div class="player-title" id="player-title"></div>
+        <div class="player-year" id="player-year"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+ <!-- Social Share Buttons -->
+ <div class="social-share">
+                <!-- <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank" class="facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a> -->
+               <!--  <a href="https://twitter.com/intent/tweet?url=YOUR_URL&text=Check this out!" target="_blank" class="twitter">
+                  <i class="fab fa-twitter"></i>
+                </a> -->
+                <a href="https://t.me/betschampions" target="_blank" class="tips">
+                  <i class="fas fa-dollar-sign"> Make money</i>
+                </a>
+                <a href="https://t.me/netflixairdrops" target="_blank" class="telegram">
+                  <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://www.whatsapp.com/channel/0029Vb6fTp1LNSZwenHfSv07" target="_blank" class="whatsapp">
+                  <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.instagram.com/?netflixairdrop" target="_blank" class="instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+                
+                <!-- <a href="https://www.reddit.com/submit?url=YOUR_URL&title=Awesome%20Content" target="_blank" class="reddit">
+                  <i class="fab fa-reddit-alien"></i>
+                </a> -->
+</div>
+
+<div class="banner-slot" data-banner-id="slot2"></div>
+
+
+<!-- ✅ Content -->
+<main class="detail-container">
+  <div class="content-details">
+    <div class="poster-column">
+      <img id="poster" class="poster-image" alt="Poster">
+      <div class="rating">⭐ <span id="rating"></span> / 10</div>
+      <div class="vote-count"><span id="votes"></span> votes</div>
+      <button class="favorite-button">♡ Add to Favorite</button>
+    </div>
+    <div class="details-column">
+      <h1 class="movie-title" id="title"></h1>
+      <div class="badges">
+        <span class="badge">Trailer</span>
+        <span class="badge">HD</span>
+        <span class="badge">IMDB: <span id="imdb"></span></span>
+      </div>
+      <p class="movie-description" id="overview"></p>
+      <div class="details-grid">
+        <div>Released:</div><div id="release-date"></div>
+        <div>Genre:</div><div id="genres"></div>
+        <div>Casts:</div><div id="casts"></div>
+        <div>Duration:</div><div id="runtime"></div>
+        <div>Country:</div><div id="countries"></div>
+        <div>Production:</div><div id="production"></div>
+      </div>
+      <button class="watch-button">▶ Watch Now</button>
+
+    </div>
+  </div>
+</main>
+
+<!-- ✅ Related Movies -->
+<!-- RELATED MOVIES -->
+<section class="related-section">
+  <h2>You may also like</h2>
+  <div id="related" class="related-grid"></div>
+  <div id="related-pagination" class="pagination"></div>
+</section>
+
+<div class="banner-slot" data-banner-id="slot2"></div>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <!-- Top Section -->
+    <div class="footer-top">
+      <!-- Description -->
+      <div class="footer-description">
+        <h2 class="logo">F2Movies.us</h2>
+        <p class="tagline">Free Movies streaming site with zero ads</p>
+        <p class="desc">
+          We let you watch movies online without having to register or pay, 
+          with over <b>10,000 movies</b> and TV-Series. You can also download 
+          full movies from F2Movies and watch later if you want.
+        </p>
+      </div>
+  
+      <!-- Navigation Links -->
+      <div class="footer-links">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="coming-soon.html">IOS App</a></li>
+          <li><a href="coming-soon.html">Android App</a></li>
+          <li><a href="terms-and-services.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="coming-soon.html">Desktop App</a></li>
+        </ul>
+      </div>
+  
+      <!-- Related Links -->
+      <div class="footer-links">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="sitemap.html">Sitemap</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms-and-services.html">terms andservices</a></li>
+          <li><a href="Advertise-with-us.html">Advertising</a></li>
+        </ul>
+      </div>
+  
+      <!-- Call to Action -->
+      <div class="footer-cta">
+        <h3>Promote with Us</h3>
+        <p>
+          Want to promote your business, ads, or accounts?  
+          Book a banner spot and reach thousands of daily viewers.
+        </p>
+        <a href="https://t.me/lynndamaris" target="_blank" class="telegram-btn">
+          Contact on Telegram
+        </a>
+      </div>
+    </div>
+  
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+      <p>© 2025 F2Movies. All rights reserved.</p>
+      <p>Built with ❤️ for movie lovers worldwide.</p>
+    </div>
+  </footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const hamburger = document.querySelector(".hamburger");
+    const navLinks = document.querySelector(".nav-links");
+
+    // Toggle menu
+    hamburger.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navLinks.classList.toggle("show");
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+        navLinks.classList.remove("show");
+      }
+    });
+  });
+</script>
+
+<script defer src="js/tmdb.js"></script>
+<script defer src="js/movie-detail.js"></script>
+<script defer src="js/search-bar.js"></script>
+<script defer src="js/menu.js"></script>
+<script defer src="js/promo.js"></script>
+<script defer src="banners.json"></script>
+</body>
+</html>
+

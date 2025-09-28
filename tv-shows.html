@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Movies - F2Movies</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/1st.css">
+  <link rel="stylesheet" href="css/4th.css">
+  <link rel="stylesheet" href="css/promo.css">
+  <style>
+    /* Poster container keeps a stable aspect ratio */
+    .grid .movie-card .poster {
+      aspect-ratio: 2 / 3; /* standard poster ratio */
+      width: 100%;
+      overflow: hidden;
+      background-color: #0b0b0b; /* subtle placeholder background */
+      border-radius: 8px;
+    }
+    
+    /* Make images fill the reserved area without changing layout */
+    .grid .movie-card .poster img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+      /* ==========================
+   🌑 Overlay
+========================== */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 900;
+  display: none;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+    </style>
+    
+</head>
+<body>
+  <div class="overlay"></div>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="logo">F2<span>movies.us</span></div>
+    <button class="hamburger blue">☰</button>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="movies.html">Movies</a>
+      <a href="tv-shows.html" class="active three">TV Shows</a>
+      <a href="Advertise-with-us.html" class="one">Advertise <span>with us</span></a>
+      <a href="coming-soon.html" class="two"><span>Android App</span></a>
+    </nav>
+    <div class="search-login">
+      <input type="text" placeholder="Search..." id="search-input">
+      <button id="search-btn">🔍</button>
+      <!-- <button class="login-btn">Login</button> -->
+    </div>
+    <button class="hamburger red">☰</button>
+  </header>
+
+  <main class="movies-page">
+
+    <!-- <div class="banner-slot" data-banner-id="slot2"></div> -->
+
+
+    
+    <!-- Section: Crime & Investigation TV Shows -->
+    <div class="page-header crime-investigation-header">
+      <h2>Crime & Investigation TV Shows</h2>
+      <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid crime-investigation-grid"></div>
+    <div class="pagination crime-investigation-pagination"></div>
+    
+    <div class="banner-slot" data-banner-id="slot1"></div>
+    
+    <!-- Section: Asian TV Shows -->
+    <div class="page-header asian-header">
+        <h2>Asian TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid asian-grid"></div>
+    <div class="pagination asian-pagination"></div>
+
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: Recommended TV Shows -->
+    <div class="page-header recommended-header">
+        <h2>Recommended TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid recommended-grid"></div>
+    <div class="pagination recommended-pagination"></div>
+
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+
+    <!-- Section: Trending TV Shows -->
+    <div class="page-header trending-header">
+        <h2>Trending TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid trending-grid"></div>
+    <div class="pagination trending-pagination"></div>
+
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: Popular TV Shows -->
+    <div class="page-header popular-header">
+        <h2>Popular TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid popular-grid"></div>
+    <div class="pagination popular-pagination"></div>    
+    
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: African TV Shows -->
+    <div class="page-header african-header">
+        <h2>African TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid african-grid"></div>
+    <div class="pagination african-pagination"></div>
+
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+        <!-- Section: Comedy TV Shows -->
+    <div class="page-header comedy-header">
+        <h2>Comedy TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid comedy-grid"></div>
+    <div class="pagination comedy-pagination"></div>
+    
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: Japanese TV Shows -->
+    <div class="page-header japanese-header">
+        <h2>Japanese TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid japanese-grid"></div>
+    <div class="pagination japanese-pagination"></div>
+  
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: Animated TV Shows -->
+    <div class="page-header animated-header">
+        <h2>Animated TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid animated-grid"></div>
+    <div class="pagination animated-pagination"></div>
+  
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: Drama TV Shows -->
+    <div class="page-header drama-header">
+        <h2>Drama TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid drama-grid"></div>
+    <div class="pagination drama-pagination"></div>
+  
+    <div class="banner-slot" data-banner-id="slot1"></div>
+  
+    <!-- Section: Action & Adventure TV Shows -->
+    <div class="page-header action-adventure-header">
+        <h2>Action & Adventure TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid action-adventure-grid"></div>
+    <div class="pagination action-adventure-pagination"></div>
+  
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: Sci-Fi & Fantasy TV Shows -->
+    <div class="page-header sci-fi-fantasy-header">
+        <h2>Sci-Fi & Fantasy TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid sci-fi-fantasy-grid"></div>
+    <div class="pagination sci-fi-fantasy-pagination"></div>
+  
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+    <!-- Section: Romantic Drama TV Shows -->
+    <div class="page-header romantic-dramas-header">
+        <h2>Romantic Drama TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid romantic-dramas-grid"></div>
+    <div class="pagination romantic-dramas-pagination"></div>
+  
+    <div class="banner-slot" data-banner-id="slot1"></div>
+
+
+    <!-- Section: Thriller & Mystery TV Shows -->
+<!--     <div class="page-header thrillers-mystery-header">
+        <h2>Thriller & Mystery TV Shows</h2>
+        <button class="filter-btn">Filter</button>
+    </div>
+    <div class="grid thrillers-mystery-grid"></div>
+    <div class="pagination thrillers-mystery-pagination"></div> -->
+  
+<!-- Section: Horror TV Shows -->
+<!-- <div class="page-header horror-header">
+  <h2>Horror TV Shows</h2>
+  <button class="filter-btn">Filter</button>
+</div>
+<div class="grid horror-grid"></div>
+<div class="pagination horror-pagination"></div>
+ -->
+
+  </main>
+
+  <!-- Footer -->
+<!--   <footer class="main-footer">
+    <div class="footer-links">
+      <a href="#">Android App</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Contact</a>
+      <a href="#">Sitemap</a>
+    </div>
+    <p>© 2025 F2Movies. All rights reserved.</p>
+  </footer> -->
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <!-- Top Section -->
+    <div class="footer-top">
+      <!-- Description -->
+      <div class="footer-description">
+        <h2 class="logo">F2Movies.us</h2>
+        <p class="tagline">Free Movies streaming site with zero ads</p>
+        <p class="desc">
+          We let you watch movies online without having to register or pay, 
+          with over <b>10,000 movies</b> and TV-Series. You can also download 
+          full movies from F2Movies and watch later if you want.
+        </p>
+      </div>
+  
+      <!-- Navigation Links -->
+      <div class="footer-links">
+        <h3>Navigation</h3>
+        <ul>
+          <li><a href="coming-soon.html">IOS App</a></li>
+          <li><a href="coming-soon.html">Android App</a></li>
+          <li><a href="terms-and-services.html">Terms of Service</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="coming-soon.html">Desktop App</a></li>
+        </ul>
+      </div>
+  
+      <!-- Related Links -->
+      <div class="footer-links">
+        <h3>Related</h3>
+        <ul>
+          <li><a href="sitemap.html">Sitemap</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy</a></li>
+          <li><a href="terms-and-services.html">terms andservices</a></li>
+          <li><a href="Advertise-with-us.html">Advertising</a></li>
+        </ul>
+      </div>
+  
+      <!-- Call to Action -->
+      <div class="footer-cta">
+        <h3>Promote with Us</h3>
+        <p>
+          Want to promote your business, ads, or accounts?  
+          Book a banner spot and reach thousands of daily viewers.
+        </p>
+        <a href="https://t.me/lynndamaris" target="_blank" class="telegram-btn">
+          Contact on Telegram
+        </a>
+      </div>
+    </div>
+  
+    <!-- Bottom Section -->
+    <div class="footer-bottom">
+      <p>© 2025 F2Movies. All rights reserved.</p>
+      <p>Built with ❤️ for movie lovers worldwide.</p>
+    </div>
+  </footer>
+
+
+  <!-- scripts: tmdb-api must load before the page-specific scripts -->
+  <script defer src="js/tmdb-api.js"></script>
+  <script defer src="js/TVSHOWS/popular-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/trending-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/recommended-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/asian-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/african-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/japanese-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/animated-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/drama-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/comedy-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/crime-investigation-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/action-adventure-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/sci-fi-fantasy-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/romantic-dramas-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/thrillers-mystery-tvshows.js"></script>
+  <script defer src="js/TVSHOWS/horror-tvshows.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Select all filter buttons
+      const filterButtons = document.querySelectorAll(".filter-btn");
+  
+      // Loop through each and add click event
+      filterButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          window.location.href = "search.html"; // redirect to search page
+        });
+      });
+    });
+  </script>
+
+  <!-- keep search-bar available for header search -->
+  <script defer src="js/search-bar.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/promo.js"></script>
+  <script src="banners.json"></script>
+</body>
+</html>

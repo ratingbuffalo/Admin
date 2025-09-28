@@ -1,0 +1,18 @@
+/* ==========================
+   🎬 Movie &tvshows menu Header
+========================== */
+
+  /* ==========================
+     📱 Responsive
+  ========================== */
+
+  @media (min-width: 601px),
+ (max-width: 768px) {
+  
+    .main-header .nav-links {
+        /* border: 3px solid orange; */
+     /* border: 3px solid red; */
+      margin-top: 0;
+    }
+  }
+ 

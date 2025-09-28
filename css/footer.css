@@ -1,0 +1,100 @@
+/* Footer Base */
+.main-footer {
+    background: #1a1a1a;
+    color: #e5e5e5;
+    font-family: Arial, sans-serif;
+    width: 100%;
+  }
+  
+  /* Top Section */
+  .footer-top {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  
+  /* Description */
+  .footer-description .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    margin-bottom: 5px;
+  }
+  .footer-description .tagline {
+    color: #d4ff00;
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  .footer-description .desc {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ccc;
+  }
+  
+  /* Navigation & Related */
+  .footer-links h3 {
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-links ul li {
+    margin-bottom: 6px;
+  }
+  .footer-links ul li a {
+    color: #e5e5e5;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s;
+  }
+  .footer-links ul li a:hover {
+    color: #d4ff00;
+  }
+  
+  /* CTA */
+  .footer-cta h3 {
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .footer-cta p {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #ccc;
+    margin-bottom: 15px;
+  }
+  .telegram-btn {
+    display: inline-block;
+    background: #d4ff00;
+    color: #000;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .telegram-btn:hover {
+    background: #b5e600;
+  }
+  
+  /* Bottom Section */
+  .footer-bottom {
+    background: #111;
+    padding: 15px 20px;
+    text-align: center;
+    font-size: 12px;
+    color: #ccc;
+    border-top: 1px solid #2a2a2a;
+  }
+  .footer-bottom p {
+    margin: 5px 0;
+  }
+  

@@ -1,0 +1,7 @@
+
+  @media (min-width: 769px) and (max-width: 895px) {
+   
+     .main-header .nav-links span {
+        display: none;
+     }
+    }

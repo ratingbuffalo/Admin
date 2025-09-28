@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Privacy Policy | F2Movies</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <style>
+    :root {
+      --bg-1: #0d0d0d;
+      --bg-2: #1a1a1a;
+      --accent: #b5e600;
+      --text: #cfcfcf;
+      --muted: #999;
+      --card: #141414;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.8s ease both;
+    }
+    header h1 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    .policy-box {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 900px;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      animation: slideUp 1s ease both;
+    }
+
+    .policy-box h2 {
+      color: var(--accent);
+      margin: 1.5rem 0 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    .policy-box p {
+      margin-bottom: 1rem;
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cta a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(181,230,0,0.25);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .policy-box { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Privacy Policy</h1>
+    <p>Your privacy matters to us at F2Movies</p>
+  </header>
+
+  <div class="policy-box">
+    <p>Effective Date: January 1, 2025</p>
+
+    <h2>1. Information We Collect</h2>
+    <p>We do not collect personally identifiable information unless voluntarily provided. We may collect non-personal data such as device type, browser, and general usage statistics for improving user experience.</p>
+
+    <h2>2. How We Use Information</h2>
+    <p>Information is used to optimize site performance, analyze trends, and maintain security. We do not sell or share your data with third parties for marketing purposes.</p>
+
+    <h2>3. Cookies</h2>
+    <p>Our site may use cookies to improve navigation and personalize your experience. You can disable cookies in your browser settings if preferred.</p>
+
+    <h2>4. Third-Party Services</h2>
+    <p>We may use third-party analytics and advertising services. These services may collect non-personal data to help deliver relevant content and ads.</p>
+
+    <h2>5. Security</h2>
+    <p>We implement reasonable security measures to protect your data, though no online system is 100% secure.</p>
+
+    <h2>6. Policy Updates</h2>
+    <p>We may update this Privacy Policy from time to time. Continued use of our website means you agree to the latest version.</p>
+
+    <h2>7. Contact Us</h2>
+    <p>If you have questions about this Privacy Policy, please refer to our Contact Page.</p>
+
+    <div class="cta">
+      <a href="index.html">🔙 Back to Home</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 F2Movies.us | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

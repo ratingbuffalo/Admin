@@ -1,0 +1,26 @@
+{
+    "site": "f2movies.us",
+    "defaultTarget": "https://f2movies.us",
+    "banners": [
+      {
+        "id": "hero-001",
+        "name": "Homepage Hero Banner",
+        "enabled": true,
+        "priority": 10,
+        "placements": [
+          {
+            "device": "desktop",
+            "size": { "w": 728, "h": 90 },
+            "image_url": "https://drive.google.com/uc?export=view&id=YOUR_FILE_ID",
+            "target_url": "https://t.me/lynndamaris",
+            "alt": "Promote with f2movies"
+          }
+        ],
+        "schedule": {
+          "start": null,
+          "end": null
+        }
+      }
+    ]
+  }
+  

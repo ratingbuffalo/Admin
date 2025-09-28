@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sitemap | F2Movies</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <style>
+    :root {
+      --bg-1: #0d0d0d;
+      --bg-2: #1a1a1a;
+      --accent: #b5e600; 
+      --text: #cfcfcf;
+      --muted: #999;
+      --card: #141414;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.8s ease both;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .sitemap-box {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      animation: slideUp 1s ease both;
+    }
+
+    .sitemap-box ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .sitemap-box li {
+      margin: 0.8rem 0;
+      font-size: 1.05rem;
+    }
+
+    .sitemap-box a {
+      text-decoration: none;
+      color: var(--accent);
+      font-weight: 600;
+      transition: color 0.25s ease;
+    }
+    .sitemap-box a:hover {
+      color: #9bcc00;
+    }
+
+    .cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cta a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(181,230,0,0.25);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .sitemap-box { padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sitemap</h1>
+    <p>Quick access to all key pages of F2Movies</p>
+  </header>
+
+  <div class="sitemap-box">
+    <ul>
+      <li><a href="index.html">🏠 Home</a></li>
+      <li><a href="movies.html">🎬 Movies</a></li>
+      <li><a href="tv-shows.html">📺 TV Shows</a></li>
+      <li><a href="Advertise-with-us.html">📢 Advertise with Us</a></li>
+      <li><a href="contact.html">📩 Contact</a></li>
+      <li><a href="terms.html">📖 Terms of Service</a></li>
+      <li><a href="privacy.html">🔒 Privacy Policy</a></li>
+      <li><a href="sitemap.html">🗺 Sitemap</a></li>
+    </ul>
+
+    <div class="cta">
+      <a href="index.html">🔙 Back to Home</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 F2Movies.us | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "slot1": {
+    "type": "image",
+    "images": {
+      "970x150": "images/970x150A1.png",
+      "970x90": "images/970x90A1.png",
+      "728x90": "images/728x90A1.png",
+      "468x60": "images/468x60A1.png",
+      "320x100": "images/320x100A1.png",
+      "320x50": "images/320x50A1.png",
+      "234x60": "images/320x50A1.png"
+    },
+    "link": "https://t.me/lynndamaris"
+  },
+  "slot2": {
+    "type": "image",
+    "images": {
+      "970x150": "images/970x150.png",
+      "970x90": "images/970x90.png",
+      "728x90": "images/728x90.png",
+      "468x60": "images/468x60.png",
+      "320x100": "images/320x100.png",
+      "320x50": "images/320x50.jpg",
+      "234x60": "images/fake1.png"
+    },
+    "link": "https://t.me/betschampions"
+  },
+  "slot3": {
+    "type": "image",
+    "images": {
+      "970x150": "images/970x150.png",
+      "970x90": "images/970x90.png",
+      "728x90": "images/728x90.png",
+      "468x60": "images/468x60.png",
+      "320x100": "images/320x100.png",
+      "320x50": "images/320x50.png",
+      "234x60": "images/234x60.png"
+    },
+    "link": "https://example3.com"
+  },
+  "slot4": {
+    "type": "image",
+    "images": {
+      "970x150": "images/slot4-970x150.png",
+      "970x90": "images/slot4-970x90.png",
+      "728x90": "images/slot4-728x90.png",
+      "468x60": "images/slot4-468x60.png",
+      "320x100": "images/slot4-320x100.png",
+      "320x50": "images/slot4-320x50.png",
+      "234x60": "images/slot4-234x60.png"
+    },
+    "link": "https://example4.com"
+  }
+}

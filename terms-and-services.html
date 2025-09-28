@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Terms of Service | F2Movies</title>
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <style>
+    :root {
+      --bg-1: #0d0d0d;
+      --bg-2: #1a1a1a;
+      --accent: #b5e600; 
+      --text: #cfcfcf;
+      --muted: #999;
+      --card: #141414;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, "Segoe UI", Roboto, Arial, sans-serif;
+      background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 0.8s ease both;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: var(--muted);
+    }
+
+    .terms-box {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+      animation: slideUp 1s ease both;
+    }
+
+    .terms-box h2 {
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin: 1.5rem 0 0.8rem;
+    }
+
+    .terms-box p {
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .cta {
+      margin-top: 2rem;
+      text-align: center;
+    }
+    .cta a {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+    .cta a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(181,230,0,0.25);
+    }
+
+    footer {
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      .terms-box { padding: 1.5rem; }
+      .terms-box h2 { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Terms of Service</h1>
+    <p>Our rules and conditions for using F2Movies</p>
+  </header>
+
+  <div class="terms-box">
+    <h2>1. Acceptance of Terms</h2>
+    <p>By accessing or using F2Movies, you agree to follow and be bound by these Terms of Service.</p>
+
+    <h2>2. Content Usage</h2>
+    <p>All movies, shows, and related content are provided for personal viewing only. Commercial use or redistribution is strictly prohibited.</p>
+
+    <h2>3. User Responsibilities</h2>
+    <p>You must not misuse the site, attempt unauthorized access, or take actions that may disrupt or damage the platform.</p>
+
+    <h2>4. Disclaimer</h2>
+    <p>We make no guarantee of continuous availability. The service is provided “as is” and may change or be discontinued at any time.</p>
+
+    <h2>5. Updates to Terms</h2>
+    <p>We may revise these Terms of Service from time to time. Continued use of F2Movies means you accept the updated terms.</p>
+
+    <div class="cta">
+      <a href="index.html">🔙 Back to Home</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 F2Movies.us | All Rights Reserved</p>
+  </footer>
+
+</body>
+</html>

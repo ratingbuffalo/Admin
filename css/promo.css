@@ -1,0 +1,72 @@
+/* Banner Slot Container */
+.banner-slot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto;
+  width: 100%;
+  max-width: 970px;
+  height: 150px;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Image Banner */
+.banner-slot img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ========================= */
+/* RESPONSIVE BANNER SIZES   */
+/* ========================= */
+
+/* Large Leaderboard (970x90) */
+@media (max-width: 1199px) {
+  .banner-slot {
+    max-width: 970px;
+    height: 90px;
+  }
+}
+
+/* Leaderboard (728x90) */
+@media (max-width: 1024px) {
+  .banner-slot {
+    max-width: 728px;
+    height: 90px;
+  }
+}
+
+/* Banner (468x60) */
+@media (max-width: 991px) {
+  .banner-slot {
+    max-width: 468px;
+    height: 60px;
+  }
+}
+
+/* Large Mobile (320x100) */
+@media (max-width: 768px) {
+  .banner-slot {
+    max-width: 320px;
+    height: 100px;
+  }
+}
+
+/* Mobile Leaderboard (320x50) */
+@media (max-width: 600px) {
+  .banner-slot {
+    max-width: 320px;
+    height: 50px;
+  }
+}
+
+/* Half Banner (234x60) */
+@media (max-width: 400px) {
+  .banner-slot {
+    max-width: 234px;
+    height: 60px;
+  }
+}

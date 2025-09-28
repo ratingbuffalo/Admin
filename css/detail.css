@@ -1,0 +1,312 @@
+/* 🎨 THEME VARIABLES */
+:root {
+    --bg-primary: #0a0a0a;
+    --bg-secondary: #1a1a1a;
+    --text-primary: #fff;
+    --text-secondary: #b3b3b3;
+    --accent-yellow: #f1c40f;
+    --accent-green: #2ecc71;
+    --border-color: #333;
+    --transition: 0.3s ease-in-out;
+  }
+  
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+  }
+  
+  /* =========================
+     ✅ HEADER
+  ========================= */
+  .site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+  }
+  
+  .site-header .logo {
+    font-weight: bold;
+    font-size: 20px;
+    color: var(--accent-yellow);
+  }
+  
+  .site-header .main-nav a {
+    margin: 0 12px;
+    text-decoration: none;
+    color: var(--text-primary);
+    transition: var(--transition);
+  }
+  
+  .site-header .main-nav a:hover {
+    color: var(--accent-yellow);
+  }
+  
+  .site-header .search-login {
+    display: flex;
+    align-items: center;
+  }
+  
+  .site-header .search-login input {
+    padding: 6px 10px;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    background: #222;
+    color: var(--text-primary);
+  }
+  
+  .site-header .search-login button {
+    margin-left: 10px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: none;
+    background: var(--accent-yellow);
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .site-header .search-login button:hover {
+    background: #d4ac0d;
+  }
+  
+  /* =========================
+     ✅ BREADCRUMB
+  ========================= */
+  .breadcrumb {
+    padding: 12px 30px;
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+  
+  .breadcrumb a {
+    color: var(--accent-yellow);
+    text-decoration: none;
+  }
+  
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+  
+  /* =========================
+     ✅ BACKDROP
+  ========================= */
+  .backdrop-section {
+    position: relative;
+    height: 420px;
+   /*  background: #000 center/cover no-repeat; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .backdrop-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.85));
+    z-index: 1;
+  }
+  
+  .backdrop-section > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  .play-button {
+    width: 80px;
+    height: 80px;
+    background: var(--accent-yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform var(--transition);
+  }
+  
+  .play-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* =========================
+     ✅ CONTENT DETAILS
+  ========================= */
+  .detail-container {
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .content-details {
+    display: flex;
+    gap: 30px;
+    align-items: flex-start;
+  }
+  
+  .poster-column {
+    flex: 0 0 280px;
+  }
+  
+  .poster-image {
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  }
+  
+  .details-column {
+    flex: 1;
+  }
+  
+  .movie-title {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    margin-right: 8px;
+  }
+  
+  .details-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 8px 20px;
+    margin: 20px 0;
+  }
+  
+  .watch-button {
+    background: var(--accent-yellow);
+    color: #000;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .watch-button:hover {
+    background: #d4ac0d;
+  }
+  
+  .favorite-button {
+    margin-top: 12px;
+    background: transparent;
+    color: var(--text-primary);
+    border: 2px solid var(--text-primary);
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+  }
+  
+  .favorite-button:hover {
+    background: var(--text-primary);
+    color: #000;
+  }
+  
+  /* =========================
+     ✅ RELATED SECTION
+  ========================= */
+  .related-section {
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .related-section h2 {
+    margin-bottom: 20px;
+    font-size: 1.6rem;
+    color: var(--accent-yellow);
+  }
+  
+  .related-content {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  
+  .related-card {
+    flex: 0 0 160px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform var(--transition);
+  }
+  
+  .related-card img {
+    width: 100%;
+    display: block;
+  }
+  
+  .related-card p {
+    padding: 6px;
+    font-size: 14px;
+    text-align: center;
+    color: var(--text-secondary);
+  }
+  
+  .related-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* =========================
+     ✅ RESPONSIVE
+  ========================= */
+  @media (max-width: 900px) {
+    .content-details {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .poster-column {
+      flex: 0 0 auto;
+    }
+  
+    .poster-image {
+      max-width: 220px;
+    }
+  
+    .movie-title {
+      text-align: center;
+    }
+  
+    .details-column {
+      text-align: center;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .site-header {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .main-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .related-card {
+      flex: 0 0 130px;
+    }
+  }
+  
+
+  
