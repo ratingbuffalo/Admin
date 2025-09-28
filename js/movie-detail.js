@@ -46,6 +46,54 @@ function getYearFromDate(dateStr) {
   return d.getFullYear();
 }
 
+/* -------------------------
+   SEO Updater
+   ------------------------- */
+   function updateSeoFromTmdb(item, type = "movie") {
+    const title = item.title || item.name || "Untitled";
+    const year = getYearFromDate(item.release_date || item.first_air_date);
+    const fullTitle = year !== "N/A" ? `${title} (${year}) | Watch Free on F2Movies` : `${title} | Watch Free on F2Movies`;
+    const desc = item.overview?.substring(0, 160) || "Watch free HD movies and TV shows on F2Movies.";
+    const poster = item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : "images/placeholder.jpg";
+    const url = `${window.location.origin}/movie-detail.html?id=${item.id}&type=${type}`;
+  
+    // Title & Description
+    document.title = fullTitle;
+    document.getElementById("seo-title")?.setAttribute("content", fullTitle);
+    document.getElementById("seo-description")?.setAttribute("content", desc);
+  
+    // Open Graph
+    document.getElementById("og-title")?.setAttribute("content", fullTitle);
+    document.getElementById("og-description")?.setAttribute("content", desc);
+    document.getElementById("og-image")?.setAttribute("content", poster);
+    document.getElementById("og-url")?.setAttribute("content", url);
+  
+    // Twitter
+    document.getElementById("twitter-title")?.setAttribute("content", fullTitle);
+    document.getElementById("twitter-description")?.setAttribute("content", desc);
+    document.getElementById("twitter-image")?.setAttribute("content", poster);
+  
+    // Canonical
+    document.getElementById("canonical-link")?.setAttribute("href", url);
+  
+    // JSON-LD
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": type === "tv" ? "TVSeries" : "Movie",
+      "name": title,
+      "image": poster,
+      "description": desc,
+      "datePublished": item.release_date || item.first_air_date,
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": item.vote_average,
+        "ratingCount": item.vote_count
+      }
+    };
+    document.getElementById("json-ld").textContent = JSON.stringify(jsonLd);
+  }
+  
+
 // Build vidsrc embed url per your spec
 function buildVidsrcUrl({ type, id, season, episode }) {
   if (type === "tv") {
@@ -196,9 +244,13 @@ async function getMovieDetails() {
 
     resolvedSeasonForEmbed = null;
     resolvedEpisodeForEmbed = null;
+
+    updateSeoFromTmdb(data, "movie");
   } catch (error) {
     console.error("Error fetching movie details:", error);
   }
+
+  
 }
 
 async function getTvDetails() {
@@ -263,9 +315,16 @@ async function getTvDetails() {
     playerTitle.textContent = `${data.name || "Untitled"} (${sStr})`;
     const year = getYearFromDate(data.first_air_date);
     playerYear.textContent = year === "N/A" ? "" : `(${year})`;
+
+    updateSeoFromTmdb(data, "tv");
   } catch (error) {
     console.error("Error fetching TV details:", error);
+
+    
   }
+
+  
+
 }
 
 // Fetch credits
