@@ -270,67 +270,52 @@
   }
 
 /* Telegram betting promotion button */
-.tips2 {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
+ .social-share a.tips {
+  width: calc(42px * 6.5);
+  max-width: calc(42px * 6.5);
 
-    width: 90%;
-    max-width: 700px;
-    margin: 25px auto;
+  background-color: #fff;
+  border-radius: 12px;
 
-    padding: 16px 20px;
+  box-shadow:
+    transparent 0 0 0 3px,
+    rgba(18, 18, 18, .1) 0 6px 20px;
 
-    background: #171717;
-    color: #ffffff;
+  color: #121212;
+  cursor: pointer;
 
-    border: 2px solid #b6ff00;
-    border-radius: 35px;
+  font-family: Inter, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
 
-    font-size: 18px;
-    font-weight: 700;
-    text-decoration: none;
-    text-transform: none;
+  padding: 1rem 1.2rem;
 
-    box-shadow: 0 0 12px rgba(182, 255, 0, 0.25);
+  letter-spacing: 2px;
+  text-decoration: none;
 
-    transition: all 0.25s ease;
+  white-space: nowrap;
+
+  box-sizing: border-box;
+
+  transition: box-shadow .2s, transform .2s;
 }
 
-/* Real Telegram blue */
-.tips2 .fa-telegram {
-    color: #229ED9;
-    font-size: 30px;
+/* Telegram icon */
+.social-share a.tips .fa-telegram {
+  color: #0088cc;
+  font-size: 28px;
+  margin-right: 8px;
 }
 
-/* Make the money part stand out */
-.tips2 {
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.15);
-}
+/* Hover */
+.social-share a.tips:hover {
+  background-color: #fff;
+  box-shadow:
+    transparent 0 0 0 3px,
+    rgba(18, 18, 18, .15) 0 8px 24px;
 
-/* Hover effect */
-.tips2:hover {
-    background: #202020;
-    border-color: #c6ff00;
-    box-shadow: 0 0 20px rgba(182, 255, 0, 0.45);
-    transform: translateY(-2px);
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    .tips2 {
-        width: 82%;
-        padding: 14px 15px;
-        font-size: 17px;
-        gap: 10px;
-    }
-
-    .tips2 .fa-telegram {
-        font-size: 28px;
-    }
-}
-  
+  transform: translateY(-3px);
+} 
   
   /* ==========================
      Pagination
