@@ -270,7 +270,7 @@
   }
 
 /* Telegram betting promotion button */
- .social-share a.tips {
+ .social-share a.tips2 {
   width: calc(42px * 6.5);
   max-width: calc(42px * 6.5);
 
@@ -301,14 +301,14 @@
 }
 
 /* Telegram icon */
-.social-share a.tips .fa-telegram {
+.social-share a.tips2 .fa-telegram {
   color: #0088cc;
   font-size: 28px;
   margin-right: 8px;
 }
 
 /* Hover */
-.social-share a.tips:hover {
+.social-share a.tips2:hover {
   background-color: #fff;
   box-shadow:
     transparent 0 0 0 3px,
