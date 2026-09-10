@@ -344,9 +344,40 @@ a{
 .social-share a.reddit { background: #ff4500; }
 .social-share a.instagram { background: linear-gradient(45deg,#f58529,#dd2a7b); }
 .social-share a.tips {
-  
 
-  background-color: #fff; 
+  
+  background: #111;
+    border: 2px solid #b6ff00;
+    border-radius: 30px;
+    box-shadow: 0 0 12px rgba(182, 255, 0, 0.35),
+                0 6px 20px rgba(0, 0, 0, 0.35);
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    flex: 1 1 auto;
+    font-family: inter, sans-serif;
+    max-width: calc(42px * 6.5);
+    min-height: 78px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1;
+    margin: 0;
+    outline: 0;
+    padding: 8px 22px 8px 12px;
+    text-align: center;
+    letter-spacing: 2px;
+    text-decoration: none;
+    transition: all .2s ease;
+    white-space: nowrap;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+/*   background-color: #fff; 
   border-radius: 12px; 
   box-shadow: transparent 0 0 0 3px,
    rgba(18, 18, 18, .1 ) 0 6px 20px; 
@@ -361,9 +392,12 @@ a{
   font-weight: 700; 
   justify-content: center; 
   line-height: 1; 
-  margin: 0; 
+  margin: 0;  */
+
+
+    
 /*   margin-top: 10px; */  
-  outline: 0;
+  /* outline: 0;
   padding: 1rem 1.2rem;
   text-align: center; 
   letter-spacing: 2px;
@@ -373,9 +407,80 @@ a{
   border: 0; 
   user-select: none; 
   -webkit-user-select: none; 
-  touch-action: manipulation;
+  touch-action: manipulation; */
   
 }
+
+    /* Telegram icon */
+.social-share a.tips i {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+
+    background: #2AABEE;
+    color: #fff;
+
+    font-size: 32px;
+    letter-spacing: 0;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+/* Vertical line between Telegram and text */
+.social-share a.tips i::after {
+    content: "";
+    position: absolute;
+
+    right: -13px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 2px;
+    height: 42px;
+
+    background: #fff;
+    opacity: 0.9;
+}
+
+/* Text */
+.social-share a.tips span {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+/* EARN MONEY in green */
+.social-share a.tips span b {
+    color: #b6ff00;
+    font-weight: 800;
+}
+
+/* Right arrow */
+.social-share a.tips strong {
+    color: #b6ff00;
+    font-size: 38px;
+    font-weight: 400;
+    line-height: 1;
+    margin-left: auto;
+}
+
+/* Hover */
+.social-share a.tips:hover {
+    background: #151515;
+    border-color: #b6ff00;
+    box-shadow: 0 0 18px rgba(182, 255, 0, 0.5),
+                0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-3px);
+    opacity: 1;
+}
+    
 .social-share a:hover {
   opacity: 0.85;
   transform: translateY(-3px);
