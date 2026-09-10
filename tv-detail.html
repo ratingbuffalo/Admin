@@ -346,36 +346,41 @@ a{
 .social-share a.tips {
 
   
-  background: #111;
+  position: relative;
+    background: #111;
     border: 2px solid #b6ff00;
     border-radius: 30px;
-    box-shadow: 0 0 12px rgba(182, 255, 0, 0.35),
-                0 6px 20px rgba(0, 0, 0, 0.35);
+
+    box-shadow:
+        0 0 12px rgba(182, 255, 0, 0.35),
+        0 6px 20px rgba(0, 0, 0, 0.35);
+
     box-sizing: border-box;
     color: #fff;
     cursor: pointer;
-    display: inline-flex;
+
+    display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 22px;
-    flex: 1 1 auto;
-    font-family: inter, sans-serif;
-    max-width: calc(42px * 6.5);
+    justify-content: flex-start;
+
+    width: calc(42px * 6.5);
+    max-width: calc(100vw - 30px);
     min-height: 78px;
+
+    padding: 8px 18px 8px 10px;
+
+    font-family: inter, sans-serif;
     font-size: 1.2rem;
     font-weight: 700;
+
     line-height: 1;
-    margin: 0;
-    outline: 0;
-    padding: 8px 22px 8px 12px;
-    text-align: center;
     letter-spacing: 2px;
     text-decoration: none;
-    transition: all .2s ease;
     white-space: nowrap;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
+
+    transition: all .2s ease;
+
+    overflow: visible;
 
 /*   background-color: #fff; 
   border-radius: 12px; 
@@ -689,7 +694,7 @@ a{
                      <i class="fab fa-telegram"></i> Join & Earn Money
                  </a> -->
                  <a href="https://t.me/predictzbets" target="_blank" class="tips">
-                    <i class="fab fa-telegram"></i>
+                    <i class="fab fa-telegram-plane"></i>
                     <span>JOIN & <b>EARN MONEY</b></span>
                     <strong>›</strong>
                  </a>
