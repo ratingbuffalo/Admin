@@ -363,11 +363,10 @@ a{
     align-items: center;
     justify-content: flex-start;
 
-    width: calc(42px * 6.5);
-    max-width: calc(100vw - 30px);
-    min-height: 78px;
-
-    padding: 8px 18px 8px 10px;
+    width: calc(42px * 7.2);
+    max-width: calc(100vw - 24px);
+    min-height: 76px;
+    padding: 8px 22px 8px 10px;
 
     font-family: inter, sans-serif;
     font-size: 1.2rem;
@@ -435,6 +434,7 @@ a{
     letter-spacing: 0;
 
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+    margin-right: 25px;
 }
 
 /* Vertical line between Telegram and text */
@@ -455,10 +455,12 @@ a{
 
 /* Text */
 .social-share a.tips span {
+    flex: 1;
     color: #fff;
-    font-size: 1.2rem;
+    font-size: 1.08rem;
     font-weight: 700;
     letter-spacing: 2px;
+    text-align: left;
 }
 
 /* EARN MONEY in green */
@@ -469,11 +471,13 @@ a{
 
 /* Right arrow */
 .social-share a.tips strong {
+    flex-shrink: 0;
     color: #b6ff00;
     font-size: 38px;
     font-weight: 400;
     line-height: 1;
-    margin-left: auto;
+    margin-left: 6px;
+    margin-right: 2px;
 }
 
 /* Hover */
